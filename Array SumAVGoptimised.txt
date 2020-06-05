@@ -1,0 +1,41 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace AmazonPrp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = { 1, 3, 2, 6, -1, 4, 1, 8, 2 };
+
+            int k = 5;
+            int[] output = new int[k];
+           // Average avg = new Average();
+            Average(input, k);
+            
+           
+
+        }
+
+        public static double[] Average(int[] a, int b)
+        {
+            double[] output = new double[b];
+            double sum = 0;
+                int windowstart = 0;
+            for (int windowend=0; windowend < a.Length; windowend++)
+            {
+                sum += a[windowend];
+                if(windowend>=b-1)
+                {
+                    output[windowstart] = sum / b;
+                    sum -= a[windowstart];
+                    windowstart++;
+                }
+
+
+            }
+            return output;
+        }
+    }
+}
