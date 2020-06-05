@@ -1,0 +1,40 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace AmazonPrp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] input = { 2,1,5,2,3,2};
+            int reqSum = 7;
+            SmallestSubArrayLen(input, reqSum);
+        }
+
+        public static int SmallestSubArrayLen(int[] inp, int rSum)
+        {
+            int smallSize=inp.Length, sum=0,wStart=0;
+            for(int windowEnd=0;windowEnd<inp.Length;windowEnd++)
+            {
+                sum += inp[windowEnd];
+
+                while(sum>=rSum)
+                {
+                    //smallSize = windowEnd + 1;
+                    smallSize = Math.Min(smallSize, windowEnd -wStart+ 1);
+                    sum -= inp[wStart];
+                    wStart++;
+
+
+                }
+
+            }
+
+
+
+            return smallSize;
+        }
+    }
+}
