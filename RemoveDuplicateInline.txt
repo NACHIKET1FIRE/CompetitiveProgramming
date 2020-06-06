@@ -1,0 +1,32 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace AmazonPrp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] inputarray = new int[]{2,3,3,3,6,9,9};
+            //int[] inputarray = { 2, 3, 3, 3, 6, 9, 9 };
+            RemoveDuplicates(inputarray);
+        }
+
+        public static int RemoveDuplicates(int[] inp)
+        {
+            int nonduppoint = 1;
+            for(int i=0;i<inp.Length;i++)
+            {
+                if(inp[nonduppoint-1] !=inp[i])
+                {
+                    inp[nonduppoint] = inp[i];
+                    nonduppoint++;
+                }
+                
+            }
+
+            return nonduppoint;
+           
+        }
+    }
+}
