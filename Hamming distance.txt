@@ -1,0 +1,41 @@
+// C# program to insert element in binary tree 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+
+class Amazon
+{
+
+	// C# implementation of above approach 
+	class GFG
+	{
+
+		// Function to calculate 
+		// hamming distance 
+		static int hammingDistance(int n1, int n2)
+		{
+			int x = n1 ^ n2;
+			int setBits = 0;
+
+			while (x > 0)
+			{
+				setBits += x & 1;
+				x >>= 1;
+			}
+
+			return setBits;
+		}
+
+		// Driver code 
+		static void Main()
+		{
+			int n1 = 9, n2 = 14;
+			System.Console.WriteLine(hammingDistance(n1, n2));
+		}
+	}
+
+	// This code is contributed by mits 
+
+	// Definition for a Node.
+
+}
