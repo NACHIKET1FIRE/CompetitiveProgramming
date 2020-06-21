@@ -1,0 +1,58 @@
+// C# program to insert element in binary tree 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using System.Globalization;
+
+class Amazon
+{
+
+	// C# implementation of above approach 
+	class GFG
+	{
+
+
+		public static int[] Func(int[] nums)
+		{
+			int[] L = new int[nums.Length];
+			L[0] = 1;
+			for(int i=1;i<nums.Length;i++)
+			{
+				L[i] = L[i - 1] * nums[i-1];
+			}
+
+			
+			int p = 1;
+			for (int i = nums.Length - 1; i >= 0; i--)
+			{
+
+				L[i] *=  p;
+				p *= nums[i];
+
+
+				
+				
+			}
+			return L;
+		}
+
+
+
+		// Driver code 
+		static void Main(string[] args)
+		{
+
+			int[] arr = { 4, 5, 1, 8, 2 };
+			int[] answer = Func(arr);	
+			foreach(var v in answer)
+			{ Console.WriteLine(v); }
+				
+		}
+
+
+		// This code is contributed by mits 
+
+		// Definition for a Node.
+	}
+}
