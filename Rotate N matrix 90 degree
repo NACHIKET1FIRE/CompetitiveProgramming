@@ -1,0 +1,73 @@
+  
+// C# implementation to find the longest 
+// increasing odd even subsequence 
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+
+class GFG
+{
+	public static List<List<int>> soln(List<List<int>> items)
+	{
+		int Rows = items.Count - 1;
+		int T = 0, B = Rows;
+		while (T < B)
+		{
+			for (int i = T; i <=items[T].Count - 1; i++)
+			{
+				int temp1 = items[T][i];
+				items[T][i] = items[i][T];
+			items[i][T] = temp1;
+			}
+			T++;
+		}
+		T = 0; B = Rows;
+		while (T<=B)
+		{
+		items[T].Reverse();
+			T++;
+		}
+		return items;
+		
+	}
+
+	// driver function 
+	public static void Main()
+	{
+		List<List<int>> items = new List<List<int>>();
+		List<int> a = new List<int>() { 31, 32, 228, 333 };
+		List<int> b = new List<int>() { 79, 197, 241, 246 };
+		List<int> c = new List<int>() { 77, 84, 126, 337 };
+		List<int> d = new List<int>() { 110, 291, 356, 371 };
+		items.Add(a);
+		items.Add(b);
+		items.Add(c);
+		items.Add(d);
+		soln(items);
+
+
+		//int[,] arr2d = new int[3, 3]{
+		//						{0, 1, 1},
+		//						{0, 0, 1},
+		//						{0, 1, 1}
+		//					};
+
+		//soln(arr2d);
+
+		//int[,,] arr3d1 = new int[1, 2, 2]{
+		//		{ { 1, 2}, { 3, 4} }
+		//	};
+
+		//int[,,] arr3d2 = new int[2, 2, 2]{
+		//		{ {1, 2}, {3, 4} },
+		//		{ {5, 6}, {7, 8} }
+		//	};
+
+		//int[,,] xc = new int[2, 2, 3]{
+		//		{ { 1, 2, 3}, {4, 5, 6} },
+		//		{ { 7, 8, 9}, {10, 11, 12} }
+		//	};
+	}
+}
+
