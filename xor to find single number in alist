@@ -1,0 +1,30 @@
+  
+// C# implementation to find the longest 
+// increasing odd even subsequence 
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+
+class GFG
+{
+	public static int soln(List<int> A)
+	{
+		int res = A[0];
+		
+		A.Sort();
+		for(int i=1;i<A.Count;i++)
+		{
+			res = res ^ A[i];
+		}
+		return res;
+    }
+
+	// driver function 
+	public static void Main()
+	{
+        List<int> ans = new List<int>() { 32, 34, 32, 725, 659, 980, 273, 725, 286, 875, 273, 538, 875, 34, 931, 150, 124, 150, 931, 659, 286, 124, 538 };
+        soln(ans);
+	}
+}
+
