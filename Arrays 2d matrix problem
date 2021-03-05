@@ -1,0 +1,59 @@
+// C# implementation to find the longest 
+// increasing odd even subsequence 
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+
+	public static int soln(int[,] items)
+	{
+
+		int Rows = items.GetLength(0)-1;
+		int columns = items.GetLength(1)-1;
+		int T = 0,L=0;
+		int maxvalue = 0,sum=0;
+		while(T<Rows)
+		{
+			sum = 0;
+			for (int i=T; i<Rows; i++)
+			{
+				sum += items[T, i];
+			}
+			if (maxvalue < sum)
+				maxvalue = sum;
+		}
+
+		return maxvalue;
+
+
+
+	}
+
+	// driver function 
+	public static void Main()
+	{
+			
+		int[,] arr2d = new int[3, 3]{
+								{0, 1, 1},
+								{0, 0, 1},
+								{0, 1, 1}
+							};
+
+		soln(arr2d);
+
+		//int[,,] arr3d1 = new int[1, 2, 2]{
+		//		{ { 1, 2}, { 3, 4} }
+		//	};
+
+		//int[,,] arr3d2 = new int[2, 2, 2]{
+		//		{ {1, 2}, {3, 4} },
+		//		{ {5, 6}, {7, 8} }
+		//	};
+
+		//int[,,] xc = new int[2, 2, 3]{
+		//		{ { 1, 2, 3}, {4, 5, 6} },
+		//		{ { 7, 8, 9}, {10, 11, 12} }
+		//	};
+	}
+}
