@@ -1,0 +1,69 @@
+// C# implementation to 
+// reverse bits of a number 
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+    // function to reverse bits of a number 
+    public static List<List<int>> reverseBits(int n)
+    {
+        //List<List<int>> A = new List<List<int>>();
+
+        
+        List<List<int>> ans = new List<List<int>>();
+
+        for (int i = 0; i < n; i++)
+        {
+            ans.Add(new List<int>());
+            for (int j = 0; j < n; j++)
+            {
+                ans[i].Add(0);
+            }
+        }
+        int value = 1;
+        int T = 0, L = 0, R = n - 1, B = n - 1;
+        while (T <= B && L <= R)
+        {
+            for (int k = L; k <= R; k++)
+            {
+                ans[T][k]=(value);
+                value++;
+            }
+            T++;
+
+            for (int k = T; k <= B; k++)
+            {
+                ans[k][R] = value;
+                value++;
+            }
+
+                R--;
+                for (int k = R; k >= L; k--)
+                {
+                    ans[B][k] = value;
+                    value++;
+                }
+                B--;
+                for (int k = B; k >= T; k--)
+                {
+                    ans[k][L] = value;
+                    value++;
+                }
+                L++;
+            
+           
+        }
+        return ans;
+    }
+
+        // Driver code 
+        public static void Main()
+	{
+		//List<int> n = new List<int>() { 1, 2, 3, 2, 5, 4, 3, 4 };
+		Console.WriteLine(reverseBits(3));
+	}
+}
+
+// This code is contributed 
+// by vt_m. 
