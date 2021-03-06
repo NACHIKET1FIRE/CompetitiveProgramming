@@ -1,0 +1,77 @@
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+
+	// Function to print the diagonals
+	static List<List<int>> diagonal(int[,] A)
+	{
+		int N = 3;
+		int value1 = 0;//, value2 = 0;
+		List<List<int>> ans = new List<List<int>>();
+		//for (int i = 0; i < 6; i++)
+		//{
+		//	ans.Add(new List<int>());
+		//	for (int j = 0; j < N; j++)
+		//	{
+		//		ans[i].Add(0);
+		//	}
+		//}
+		// For each column start row is 0
+		for (int col = 0; col < N; col++)
+		{
+			int startcol = col, startrow = 0;
+			
+			ans.Add(new List<int>());
+			while (startcol >= 0 && startrow < N)
+			{
+
+				ans[value1].Add(A[startrow, startcol]);
+				//ans[value1][value2] = A[startrow, startcol];
+				
+				startcol--;
+				startrow++;
+				//value2++;
+
+			}
+			value1++;
+			
+		}
+
+		
+		// For each row start column is N-1
+		for (int row = 1; row < N; row++)
+		{
+			int startrow = row, startcol = N - 1;
+			//value2 = 0;
+			ans.Add(new List<int>());
+			while (startrow < N && startcol >= 0)
+			{
+
+				ans[value1].Add(A[startrow, startcol]);
+				//ans[value1][value2]=(A[startrow, startcol]);
+				startcol--;
+				startrow++;
+				//value2++;
+			}
+			//value1++;
+			
+		}
+		return ans;
+	}
+
+	// Driver code
+	public static void Main(string[] args)
+	{
+
+		// Matrix initialisation
+		int[,] A
+			= { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+		diagonal(A);
+	}
+}
+
+
