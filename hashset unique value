@@ -1,0 +1,43 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+
+	// Function to print the diagonals
+	static bool diagonal(List<int> arr)
+	{
+        var dict = new Dictionary<int, int>();
+        foreach (var num in arr)
+        {
+            if (!dict.ContainsKey(num)) dict[num] = 0;
+            dict[num]++;
+        }
+
+        var hashSet = new HashSet<int>();
+        foreach (var freq in dict.Values)
+        {
+            if (hashSet.Contains(freq)) return false;
+            hashSet.Add(freq);
+        }
+
+        return true;
+
+    }
+
+	// Driver code
+	public static void Main(string[] args)
+	{
+		List<int> input = new List<int>() { 1, 2, 3, 3, 2, 2, 1, 3, 4 };
+		// Matrix initialisation
+		diagonal(input);
+
+		//1101 -
+		//1011 -
+	}
+}
+
+
