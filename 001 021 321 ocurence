@@ -1,0 +1,52 @@
+// C# implementation of above approach 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class GFG
+{
+
+
+
+	// Function to return length of 
+	// smallest subarray containing both 
+	// maximum and minimum value 
+	static List<List<int>> minSubarray(int A)
+	{
+
+        List<List<int>> ans = new List<List<int>> ();
+
+        for (int i = 0; i < A; i++)
+        {
+            ans.Add(new List<int>());
+
+            for (int j = 0; j < A; j++)
+            {
+               ans[i].Add(0);
+            }
+        }
+        int T = 0;
+        for(int i=0;i<A;i++)
+        {
+            int cindex = A-1;
+            for (int j = 1;j<=i+1 ; j++)
+            {
+                ans[i][cindex] = j;
+                cindex--;
+            }
+        }
+        return ans;
+    }
+
+	// Driver code 
+
+
+	static public void Main()
+	{
+		
+		int n = 3;
+
+		Console.WriteLine(minSubarray(n));
+	}
+}
+// This code is contributed by anuj_67.. 
