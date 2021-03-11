@@ -1,0 +1,132 @@
+// C# program to find length of longest consecutive 
+// ones by at most one swap in a Binary String 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+
+class GFG
+{
+
+	// Function to calculate the length of the 
+	// longest consecutive 1's 
+	static List<int> maximum_one(List<int> a, List<int> b)
+	{
+		Dictionary<int, int> dic1 = new Dictionary<int, int>();
+
+		for(int i =0;i<a.Count;i++)
+		{
+
+			if (!dic1.ContainsKey(a[i]))
+				dic1.Add(a[i], 1);
+			else
+				dic1[a[i]] = dic1[a[i]] + 1;
+			
+
+		}
+		Dictionary<int, int> dic3 = new Dictionary<int, int>();
+
+		for (int i = 0; i < a.Count; i++)
+		{
+
+			if (!dic3.ContainsKey(a[i]))
+				dic3.Add(a[i], 1);
+			else
+				dic3[a[i]] = dic3[a[i]] + 1;
+
+
+		}
+
+
+		Dictionary<int, int> dic2 = new Dictionary<int, int>();
+		for (int i = 0; i < b.Count; i++)
+		{
+
+			if (!dic2.ContainsKey(b[i]))
+				dic2.Add(b[i], 1);
+			else
+				dic2[b[i]] = dic2[b[i]] + 1;
+
+
+		}
+
+		
+		for(int i=0;i<b.Count;i++)
+		{
+			if(dic1.ContainsKey(b[i]))
+				{
+				dic1[b[i]] = dic1[b[i]] + 1;
+			    }
+		}
+		List<int> ans = new List<int>();
+		//for (int i=0;i<dic1.Count;i++)
+		//{
+			
+		//	if(dic1.ContainsKey(a[i]) && dic2.ContainsKey(a[i]))
+		//	{
+		//		//dic1[a[i]] = dic1[a[i]] - dic2[a[i]];
+		//		//int temp = dic1[a[i]];
+		//		//while(temp>0)
+		//		//{
+		//		//	ans.Add(a[i]);
+		//		//	temp--;
+		//		//}
+				
+		//	if(dic1[a[i]]<dic2[a[i]])
+		//		{
+		//			int temp = dic1[a[i]];
+		//			while(temp>0)
+		//			{
+		//				ans.Add(a[i]);
+		//				temp--;
+		//			}
+
+		//		}
+		//	else
+		//		{
+		//			int temp = dic2[a[i]];
+		//			while (temp > 0)
+		//			{
+		//				ans.Add(a[i]);
+		//				temp--;
+		//			}
+
+		//		}
+		//	}
+		//}
+
+		for(int i=0;i<dic1.Count;i++)
+		{
+			dic1[a[i]]=dic1[a[i]] - dic3[a[i]];
+			int temp = dic1[a[i]];
+			while(temp>0)
+			{
+				ans.Add(a[i]);
+				temp--;
+			}
+
+		}
+
+
+		
+
+		
+
+		return ans;
+	}
+
+	public static void Main()
+	{
+
+		List<int> a = new List<int>() {  2,1, 4, 10 }; //{ 1, 2, 2, 1 };
+		List<int> b = new List<int>()  { 3,6,2,10,10 }; //{ 2, 3, 1, 2 };
+		maximum_one(a, b);
+
+		
+
+
+
+	}
+}
+// This code is contributed by inder_verma.. 
