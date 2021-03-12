@@ -1,0 +1,44 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+class GFG
+{
+
+	
+	static List<int> maximum_one(List<int> A,int t)
+	{
+		List<int> ans = new List<int>();
+		Dictionary<int, int> dic = new Dictionary<int, int>();
+		for(int i=0;i<A.Count;i++)
+			dic.Add(A[i],i);
+		
+		for(int i=0;i<A.Count;i++)
+		{
+			if(dic.ContainsKey(t-A[i]))
+			{
+				ans.Add(A[i]);
+					ans.Add( t - A[i]);
+			}
+
+		}
+
+		return ans;
+
+
+	}
+
+	public static void Main()
+	{
+
+		List<int> A = new List<int>() { 1, 2, 3, 4, 5 };
+		int target = 5;
+		maximum_one(A,target);
+
+	}
+}
+
