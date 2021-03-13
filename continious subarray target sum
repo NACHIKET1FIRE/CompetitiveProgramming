@@ -1,0 +1,47 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+class GFG
+{
+
+
+	static List<int> maximum_one(List<int> A,int B)
+	{
+		List<int> ans = new List<int>();
+		int l = 0;
+		int sum = 0;
+		for(int r=0;r<A.Count;r++)
+		{
+			sum += A[r];
+			while(sum>B && l<=r)
+			{
+				sum -= A[l];
+				l++;
+			}
+			if(sum==B)
+			{
+				while(l<=r)
+				{
+					ans.Add(A[l]);
+					l++;
+				}
+			}
+		}
+		return ans;
+	}
+	public static void Main()
+	{
+
+		List<int> A = new List<int>() { 42, 9, 38, 36, 48, 33, 36, 50, 38, 8, 13, 37, 33, 38, 17, 25, 50, 50, 41};
+
+		int target =100;
+		maximum_one(A,target);
+
+	}
+}
+
