@@ -1,0 +1,72 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Policy;
+using System.Threading;
+
+class GFG
+{
+
+	static int maximum_one(List<int> A)
+	{
+		Dictionary<int, int> dic = new Dictionary<int, int>();
+		int sum = 0, length = 0, max = 0;
+		for(int i=0;i<A.Count;i++)
+		{
+
+			
+
+			if (A[i] == 0)
+			{						
+				sum = sum - 1;
+				if (dic.ContainsKey(sum))
+				{
+					length = i - dic[sum];
+
+				}
+				
+			}
+				
+			else
+			{
+				sum = sum + 1;
+				if (dic.ContainsKey(sum))
+				{
+					length = i - dic[sum];
+
+				}
+			}
+			if(!dic.ContainsKey(sum))
+				dic.Add(sum, i);
+			
+
+			if (sum == 0)
+				length = i + 1;
+
+			
+				if (max < length)
+					max = length;
+			
+
+		}
+
+		
+
+
+
+		return max;
+		
+	}
+	public static void Main()
+	{
+		List<int> A = new List<int>() { 1, 0, 1, 0, 1 };
+		//int target =0;
+		maximum_one(A);
+
+	}
+}
+
