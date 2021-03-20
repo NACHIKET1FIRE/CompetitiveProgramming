@@ -1,0 +1,87 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Threading;
+using System.Text;
+using System.Diagnostics;
+
+class GFG
+{
+    public static List<int> solution(List<int> B)
+
+    {
+        List<int> A = new List<int>();
+        B.Reverse();
+        A = B;
+        int counter = 0;
+        int sum = A[0] + 1;
+        if (A[0] == 9)
+        {
+            counter = 1;
+            A[0] = (A[0] + 1) % 10;
+        }
+        else
+            A[0] = A[0] + 1;
+
+        for (int i = 1; i < A.Count; i++)
+        {
+            if (counter == 1)
+            {
+                if (A[i] == 9)
+                {
+                    counter = 1;
+                    A[i] = (A[i] + 1) % 10;
+                }
+                else
+                {
+                    A[i] = A[i] + 1;
+                    counter = 0;
+                }
+            }
+
+        }
+        if (A.Count > 1)
+        {
+            if (counter == 1 && A[A.Count - 1] == 0)
+            {
+                A.Add(1);
+                A.Reverse();
+                return A;
+            }
+            else if (counter == 0)
+            {
+                A.Reverse();
+                while (A[0] == 0)
+                {
+                    A.Remove(0);
+                }
+            }
+
+
+
+
+
+        }
+        else
+            if (A[0] == 0)
+        {
+            A.Add(1);
+            A.Reverse();
+        }
+
+        return A;
+    }
+	public static void Main()
+	{
+        List<int> A = new List<int>() { 9 };
+
+        solution(A);
+    }
+}
+
