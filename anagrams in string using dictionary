@@ -1,0 +1,78 @@
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO.Pipes;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Threading;
+using System.Text;
+class GFG
+{
+    public static int solution(string A, string B)
+
+    {
+        char[] chA = A.ToCharArray();
+        Dictionary<char, int> dic = new Dictionary<char, int>(26);
+        Dictionary<char, int> onthefly = new Dictionary<char, int>(26);
+        for (int i=0;i<chA.Length;i++)
+        {
+            if (dic.ContainsKey(chA[i]))
+            {
+                dic[chA[i]] = dic[chA[i]] + 1;
+            }
+            else
+                dic.Add(chA[i], 1);
+        }
+        char[] ch2 = B.ToCharArray();
+        int len = A.Length;
+        
+        string sub = B.Substring(0, A.Length);
+        for(int i=0;i<sub.Length;i++)
+        {
+            if (onthefly.ContainsKey(sub[i]))
+                onthefly[sub[i]]++;
+            else
+                onthefly.Add(sub[i], 1);
+        }
+        int count = 0;
+        for(int i =0;i<(B.Length-A.Length)+1;i++)
+        {
+            if (onthefly==dic || (dic.Count==onthefly.Count && !dic.Except(onthefly).Any()))
+            {
+                count++;
+            }
+            if (B.Length == A.Length + i)
+                break;
+            if (onthefly[B[i]] > 1)
+                onthefly[B[i]] = onthefly[B[i]] - 1;
+            else
+            {               
+                onthefly.Remove(B[i]);
+            }
+            if (!onthefly.ContainsKey(B[A.Length+i]))
+                onthefly.Add(B[A.Length+i], 1);
+            else
+                onthefly[B[A.Length+i]]= onthefly[B[A.Length+i]]+1;
+        }
+
+
+
+
+        return count;
+
+    }
+	public static void Main()
+	{
+        string A = "abc";
+        string B = "abcbacabc";
+
+        solution(A,B);
+
+
+
+    }
+}
+
