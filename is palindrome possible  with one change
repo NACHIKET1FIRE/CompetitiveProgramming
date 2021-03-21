@@ -1,0 +1,31 @@
+class Solution {
+    public string solve(string A) {
+       
+       if(A.Length==0)
+       return "NO";
+       if(A.Length==1)
+       return "YES";
+       
+       int count=0;
+       int l=0;
+       int r = A.Length-1;
+       
+       while(l<=r)
+       {
+           if(A[l]!=A[r])
+           count++;
+           if(count>=2)
+           return "NO";
+           l++;
+           r--;
+           
+       }
+       
+       if(count==0 && A.Length%2!=0)
+        return "YES";
+        if(count==1)
+        return "YES";
+        
+        return "NO";
+    }
+}
