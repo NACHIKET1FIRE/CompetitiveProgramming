@@ -1,0 +1,52 @@
+// C# Implementation of above approach
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+
+	// function to find minimum increment required
+	static int minIncrementForUnique(string A, int B)
+	{
+		char[] ar = A.ToCharArray();
+
+		int[] ab = new int[26];
+		for(int i=0;i<ar.Length;i++)
+		{
+			ab[ar[i] - 'a']++;
+		}
+
+		int count = 0;
+
+		Array.Sort(ab);
+		for(int i =0;i<ab.Length;i++)
+		{
+			if(ab[i]!=0&& ab[i]<=B)
+			{
+				B = B - ab[i];
+				//count+= ab[i];
+				ab[i] = 0;
+				
+			}
+		}
+		int ans = 0;
+		foreach(var v in ab)
+		{
+			if (v != 0)
+				ans++;
+		}
+
+		return ans;
+		
+	}
+
+	// Driver code
+	public static void Main(String[] args)
+	{
+
+		string s = "abcabbccd"; int B = 3;
+		minIncrementForUnique(s,B);
+	}
+}
+
+// This code contributed by PrinciRaj1992
