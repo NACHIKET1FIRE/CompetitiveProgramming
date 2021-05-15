@@ -1,0 +1,52 @@
+// C# program to add
+// two binary strings
+using System;
+using System.Linq;
+using System.Text;
+
+class GFG
+
+	static int ExcelNum(int A)
+	{
+		if (A > int.MaxValue && A < int.MinValue)
+			return 0;
+
+		string st = A.ToString();
+		bool positiveornegative,tryvalue;
+		int num;
+		string s = "";
+		if(A>0)
+		{
+			positiveornegative = true;
+			char[] ch = st.ToCharArray();
+			Array.Reverse(ch);
+			 s = new string(ch);
+			 tryvalue = int.TryParse(s,out num);
+			if (num > int.MaxValue)
+				return 0;
+		}
+		else
+		{
+			positiveornegative = false;
+			string st1 = st.Substring(1);
+			char[] ch = st1.ToCharArray();
+			Array.Reverse(ch);
+			
+			s = new string(ch);
+			tryvalue = int.TryParse(s, out num);
+			if (num < int.MinValue|| num >int.MaxValue)
+				return 0;
+		}
+		
+		return positiveornegative==true? num:-num;	
+	}
+
+	// Driver Code
+	public static void Main()
+	{
+		int num = -1146467285;
+		ExcelNum(num);
+	}
+}
+
+
