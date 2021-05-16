@@ -1,0 +1,29 @@
+class Solution {
+    public int uniquePaths(int A, int B) {
+         long ans=1,x=1;
+         A--;
+         B--;
+    
+         int n= A+B;
+         int temp =A;
+         int xyz =B;
+         A=Math.Max(temp,xyz);
+         B=Math.Min(temp,xyz);
+        
+            
+             
+            while(x<=B)
+            {
+               ans=n*ans;
+               //Console.WriteLine(ans);
+               ans=ans/x;
+               x++;
+               n--;
+            }
+            
+            
+       
+         
+         return (int)ans;
+    }
+}
