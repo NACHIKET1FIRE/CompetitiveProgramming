@@ -1,0 +1,69 @@
+
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+
+	static List<int> solve(List<int> A, List<List<int>> B)
+	{
+		int end_index, start_index;
+		List<int> c = new List<int>();
+
+		List<int> zerone = new List<int>();
+		for(int i=0;i<A.Count-1;i++)
+		{
+			if (A[i] <= A[i + 1])
+				zerone.Add(0);
+			else
+				zerone.Add(1);
+		}
+	
+		for (int i=0;i<B.Count;i++)
+		{
+			
+				start_index = B[i][0]-1;
+			end_index = B[i][1]-1;
+			bool flag=true;
+			
+			for(int k= start_index; k< end_index; k++)
+			{
+				
+				if(zerone[k]!=0)
+				{
+					flag = false;
+					break;
+				}
+
+
+			}
+			if (flag == true)
+				c.Add(1);
+			else
+				c.Add(0);
+
+			
+		}
+		return c;
+	}
+
+
+	// Driver Code
+	public static void Main()
+	{
+		List<int> A = new List<int>() { 7, 7, 1, 6, 9 };
+
+		List<List<int>> B = new List<List<int>>
+		{
+			new List<int>() { 1, 3 },
+		new List<int>() { 4,5 },
+		new List<int>() { 1,2 },
+		new List<int>() { 3, 4 },
+		new List<int>() { 1, 5 }
+		};
+		solve(A, B);
+	}
+}
+	
+
+
