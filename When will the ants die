@@ -1,0 +1,33 @@
+
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+
+	static int solve(int A, List<int> left, List<int> right)
+	{
+		int result = 0;
+		foreach (var item in left)
+			result = Math.Max(result, item);
+
+		foreach (var item in right)
+			result = Math.Max(result, A - item);
+		return result;
+
+	}
+
+
+	// Driver Code
+	public static void Main()
+	{
+		int A = 4;
+		List<int> left = new List<int>() { 2, 3 };
+		List<int> right = new List<int>() { 0, 1 };
+		
+		solve(A, left, right);
+	}
+}
+	
+
+
