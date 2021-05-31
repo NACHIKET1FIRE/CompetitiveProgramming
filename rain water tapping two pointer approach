@@ -1,0 +1,55 @@
+// C# program to find the sum of all
+// possible submatrices of a given Matrix
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+class GFG
+{
+	static int n = 3;
+
+	// Function to find the sum of all
+	// possible submatrices of a given Matrix
+	//static List<List<int>> matrixSum(List<List<int>> arr,int A, int B)
+	static int matrixSum(List<int> height)
+	{
+        if (height == null || height.Count == 0)
+            return 0;
+
+        int i = 0, j = height.Count - 1, res = 0;
+        int leftHighest = 0, rightHighest = 0;
+        while (i <= j)
+        {
+            if (height[i] < height[j])
+            {
+                if (height[i] < leftHighest)
+                    res += leftHighest - height[i];
+                else
+                    leftHighest = height[i];
+                i++;
+            }
+            else
+            {
+                if (height[j] < rightHighest)
+                    res += rightHighest - height[j];
+                else
+                    rightHighest = height[j];
+                j--;
+            }
+        }
+
+        return res;
+
+    }
+
+	// Driver Code
+	public static void Main()
+	{
+		
+		List<int> A = new List<int>() { 1, 2, 0,1};
+
+		matrixSum(A);
+	}
+}
+
+// This code contributed by vt_m..
