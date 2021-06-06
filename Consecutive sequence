@@ -1,0 +1,74 @@
+// C# implementation of the approach
+using System;
+using System.Collections.Generic;
+
+class GFG
+{
+
+	// Recursive function to return gcd of a and b
+	
+
+	// Function to return the minimum
+	// deletions required
+	static int MinDeletion(List<int> nums)
+	{
+
+		HashSet<int> num_set = new HashSet<int>(nums);
+		//for (int num : nums)
+		//{
+		//	num_set.add(num);
+		//}
+
+		int longestStreak = 0;
+
+		foreach (int num in num_set)
+		{
+			if (!num_set.Contains(num - 1))
+			{
+				int currentNum = num;
+				int currentStreak = 1;
+
+				while (num_set.Contains(currentNum + 1))
+				{
+					currentNum += 1;
+					currentStreak += 1;
+				}
+
+				longestStreak = Math.Max(longestStreak, currentStreak);
+			}
+		}
+
+		return longestStreak;
+
+		//HashSet<int> hs = new HashSet<int>(nums);
+		//int maxSeq = 0;
+		//for (int i = 0, curSeq = 1; i < nums.Count; i++, curSeq = 1)
+		//{
+		//	hs.Remove(nums[i]);
+		//	for (int j = 1; nums[i] <= int.MaxValue - j && hs.Contains(nums[i] + j); j++)
+		//	{
+		//		hs.Remove(nums[i] + j);
+		//		curSeq++;
+		//	}
+		//	for (int j = 1; nums[i] >= int.MinValue + j && hs.Contains(nums[i] - j); j++)
+		//	{
+		//		hs.Remove(nums[i] - j);
+		//		curSeq++;
+		//	}
+		//	maxSeq = Math.Max(maxSeq, curSeq);
+		//}
+		//return maxSeq;
+	}
+
+
+	// Driver code
+	public static void Main()
+	{
+		List<int> a = new List<int>() { 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 };		
+
+		Console.WriteLine(MinDeletion(a));
+		Console.ReadKey();
+	}
+}
+
+// This code is contributed by anuj_67..
